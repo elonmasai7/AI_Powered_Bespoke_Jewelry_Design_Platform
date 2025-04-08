@@ -1,0 +1,193 @@
+:root {
+    --primary: hsl(210, 25%, 12%);
+    --secondary: hsl(30, 8%, 85%);
+    --accent: hsl(38, 72%, 50%);
+    --glass: rgba(255, 255, 255, 0.05);
+    --space: 1.5rem;
+    --radius: 12px;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--primary);
+    color: var(--secondary);
+    min-height: 100vh;
+    padding: var(--space);
+}
+
+.dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: var(--space);
+    height: calc(100vh - 3rem);
+}
+
+/* Control Panel */
+.control-panel {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius);
+    padding: var(--space);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow);
+}
+
+.panel-header {
+    margin-bottom: 2rem;
+}
+
+.panel-header h1 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    background: linear-gradient(45deg, hsl(38, 72%, 50%), hsl(38, 72%, 70%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--secondary);
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255, 174, 0, 0.1);
+}
+
+button {
+    background: var(--accent);
+    color: black;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 1rem;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* Preview Section */
+.preview-section {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius);
+    padding: var(--space);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.viewport-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.viewport-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#3dCanvas {
+    width: 100%;
+    height: 500px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.design-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.design-card:hover {
+    transform: translateY(-4px);
+}
+
+.design-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.material-tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: var(--accent);
+    color: black;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+/* Loading State */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    place-items: center;
+    border-radius: var(--radius);
+    z-index: 10;
+}
+
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--accent);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
